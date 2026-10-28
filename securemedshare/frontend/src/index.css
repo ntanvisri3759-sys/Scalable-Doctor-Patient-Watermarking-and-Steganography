@@ -1,17 +1,97 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy-50: #eef3fa;
-  --color-navy-100: #d6e2f2;
-  --color-navy-600: #1d4b86;
-  --color-navy-700: #143a6b;
-  --color-navy-800: #0f2b52;
-  --color-navy-900: #0b1f3a;
+  /* Mocha Brown #6F4E37 and tints */
+  --color-mocha-50: #faf6f3;
+  --color-mocha-100: #f3ece6;
+  --color-mocha-200: #e4d5ca;
+  --color-mocha-300: #d1bbaa;
+  --color-mocha-400: #a37e63;
+  --color-mocha-500: #876246;
+  --color-mocha-600: #6f4e37;
+  --color-mocha-700: #5a3e2b;
+  --color-mocha-800: #462f20;
+  --color-mocha-900: #332216;
+  --color-mocha-950: #21150d;
+
+  /* Platinum Silver #E5E4E2 and tints */
+  --color-platinum-50: #faf9f8;
+  --color-platinum-100: #f3f2f0;
+  --color-platinum-200: #e5e4e2;
+  --color-platinum-300: #d6d4d0;
+  --color-platinum-400: #bcb9b3;
+  --color-platinum-500: #9e9a92;
+  --color-platinum-600: #7e7a73;
+
+  /* Pale Lavender #E6E0F0 and tints */
+  --color-lavender-50: #faf8fd;
+  --color-lavender-100: #f3eff9;
+  --color-lavender-200: #e6e0f0;
+  --color-lavender-300: #d6ccea;
+  --color-lavender-400: #beafde;
+  --color-lavender-500: #9e88cc;
+  --color-lavender-600: #7e65b3;
+  --color-lavender-700: #644d97;
+  --color-lavender-800: #4d3a77;
+  --color-lavender-900: #392a5b;
+
+  /* Seamless token aliases for complete UI re-theming */
+  --color-navy-50: #faf8fd;
+  --color-navy-100: #e6e0f0;
+  --color-navy-200: #d6ccea;
+  --color-navy-600: #6f4e37;
+  --color-navy-700: #5a3e2b;
+  --color-navy-800: #462f20;
+  --color-navy-900: #332216;
+
+  --color-teal-50: #faf8fd;
+  --color-teal-100: #e6e0f0;
+  --color-teal-200: #d6ccea;
+  --color-teal-300: #beafde;
+  --color-teal-400: #e6e0f0;
+  --color-teal-500: #876246;
+  --color-teal-600: #6f4e37;
+  --color-teal-700: #5a3e2b;
+  --color-teal-800: #462f20;
+  --color-teal-900: #332216;
+
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
-  background: #f8fafc;
-  color: #1e293b;
+  background-color: #e5e4e2;
+  background-image: 
+    radial-gradient(at 0% 0%, #e6e0f0 0px, transparent 55%),
+    radial-gradient(at 100% 0%, #faf8fd 0px, transparent 45%),
+    radial-gradient(at 100% 100%, #e5e4e2 0px, transparent 55%),
+    radial-gradient(at 0% 100%, #e6e0f0 0px, transparent 50%),
+    radial-gradient(at 50% 40%, rgba(111, 78, 55, 0.05) 0px, transparent 65%);
+  background-attachment: fixed;
+  color: #332216;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Custom theme helper classes */
+.bg-mocha-gradient {
+  background: linear-gradient(180deg, #2a180e 0%, #3a2315 40%, #52341f 80%, #6f4e37 100%);
+}
+
+.bg-sidebar-mocha {
+  background: linear-gradient(180deg, #24140b 0%, #331f13 50%, #462b1b 100%);
+}
+
+.bg-platinum-lavender {
+  background: linear-gradient(135deg, #f3f2f0 0%, #e6e0f0 50%, #e5e4e2 100%);
+}
+
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid #e5e4e2;
+}
+
+.card-header-lavender {
+  background: linear-gradient(90deg, rgba(230, 224, 240, 0.65) 0%, rgba(229, 228, 226, 0.45) 100%);
+  border-bottom: 1px solid #e5e4e2;
 }

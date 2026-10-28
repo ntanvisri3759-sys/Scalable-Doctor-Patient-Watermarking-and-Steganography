@@ -8,15 +8,18 @@ import { api } from "../services/api.js";
 
 function Shell({ title, children, footer }) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-navy-50 p-4">
-      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
-        <Link to="/" className="mb-4 flex items-center justify-center gap-2 text-navy-900">
-          <ShieldPlus className="h-7 w-7 text-teal-600" /><span className="text-lg font-bold">SecureMedShare</span>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#E5E4E2] via-[#E6E0F0] to-[#E5E4E2] p-4">
+      <div className="w-full max-w-md rounded-2xl border border-[#E5E4E2] bg-white/95 p-8 shadow-xl backdrop-blur-md">
+        <Link to="/" className="mb-4 flex items-center justify-center gap-2.5 text-[#332216]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#E6E0F0] to-[#E5E4E2] text-[#6F4E37] shadow-xs">
+            <ShieldPlus className="h-5 w-5" />
+          </div>
+          <span className="text-lg font-bold">SecureMedShare</span>
         </Link>
-        <h1 className="mb-4 text-center text-xl font-bold text-navy-900">{title}</h1>
+        <h1 className="mb-4 text-center text-xl font-bold text-[#332216]">{title}</h1>
         <DemoBanner>FastAPI Role-Based Access Control (RBAC) with JWT authentication.</DemoBanner>
         {children}
-        <p className="mt-4 text-center text-sm text-slate-500">{footer}</p>
+        <p className="mt-4 text-center text-sm text-[#5A3E2B]/80">{footer}</p>
       </div>
     </div>
   );

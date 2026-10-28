@@ -84,7 +84,7 @@ export default function Stego() {
       </DemoBanner>
       <div className="mb-4 flex gap-2">
         {[["hide", "Hide information"], ["extract", "Extract information"]].map(([k, l]) => (
-          <button key={k} onClick={() => setTab(k)} className={cx("rounded-lg px-4 py-2 text-sm font-medium", tab === k ? "bg-navy-900 text-white" : "bg-white text-slate-600 ring-1 ring-slate-200")}>{l}</button>
+          <button key={k} onClick={() => setTab(k)} className={cx("rounded-lg px-4 py-2 text-sm font-medium transition", tab === k ? "bg-[#6F4E37] text-white shadow-sm" : "bg-white/90 text-[#462F20] border border-[#E5E4E2] hover:bg-[#E6E0F0]/50")}>{l}</button>
         ))}
       </div>
 

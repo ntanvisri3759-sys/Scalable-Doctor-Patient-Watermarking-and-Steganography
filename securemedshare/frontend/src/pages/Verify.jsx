@@ -6,15 +6,15 @@ import { api } from "../services/api.js";
 import { useToast } from "../context/ToastContext.jsx";
 
 const HASH_STATES = {
-  verified: { label: "Integrity Verified", Icon: CheckCircle2, cls: "border-teal-200 bg-teal-50 text-teal-900", text: "Calculated hash matches the trusted reference." },
+  verified: { label: "Integrity Verified", Icon: CheckCircle2, cls: "border-[#D6CCEA] bg-[#E6E0F0] text-[#392A5B]", text: "Calculated hash matches the trusted reference." },
   mismatch: { label: "Integrity Mismatch", Icon: XCircle, cls: "border-red-200 bg-red-50 text-red-900", text: "Calculated hash differs from the trusted reference (Possible tampering)." },
   unavailable: { label: "Verification Unavailable", Icon: MinusCircle, cls: "border-amber-200 bg-amber-50 text-amber-900", text: "No trusted server-side reference exists yet." },
 };
 
-function Row({ title, children, tone = "border-slate-200 bg-white text-slate-700", Icon = MinusCircle }) {
+function Row({ title, children, tone = "border-[#E5E4E2] bg-white/90 text-[#332216]", Icon = MinusCircle }) {
   return (
-    <div className={`flex items-start gap-3 rounded-lg border p-4 ${tone}`}>
-      <Icon className="mt-0.5 h-5 w-5 shrink-0" />
+    <div className={`flex items-start gap-3 rounded-lg border p-4 shadow-2xs backdrop-blur-xs ${tone}`}>
+      <Icon className="mt-0.5 h-5 w-5 shrink-0 text-[#6F4E37]" />
       <div><p className="font-semibold">{title}</p><div className="mt-1 text-sm">{children}</div></div>
     </div>
   );
@@ -96,19 +96,19 @@ export default function Verify() {
               </Row>
               <Row
                 title="2. Digital Watermark verification"
-                tone={result.watermark_verification?.detected ? "border-teal-200 bg-teal-50 text-teal-900" : "border-slate-200 bg-white text-slate-700"}
+                tone={result.watermark_verification?.detected ? "border-[#D6CCEA] bg-[#E6E0F0] text-[#392A5B]" : "border-[#E5E4E2] bg-white/90 text-[#5A3E2B]"}
                 Icon={result.watermark_verification?.detected ? CheckCircle2 : MinusCircle}
               >
                 {result.watermark_verification?.status || "Watermark check complete."}
                 {result.watermark_verification?.marker && (
-                  <p className="mt-1 font-mono text-xs">Extracted Marker: {result.watermark_verification.marker}</p>
+                  <p className="mt-1 font-mono text-xs text-[#6F4E37]">Extracted Marker: {result.watermark_verification.marker}</p>
                 )}
               </Row>
               <Row title="3. Steganography Payload Status" Icon={MinusCircle}>
                 {result.stego_extraction_status?.status || "Stego extraction requires authorized doctor key."}
               </Row>
-              <div className="rounded-lg bg-slate-50 p-4 text-xs text-slate-600">
-                <p className="mb-1 font-semibold text-slate-700">Security Guarantee</p>
+              <div className="rounded-lg border border-[#D6CCEA] bg-[#E6E0F0]/60 p-4 text-xs text-[#462F20] shadow-2xs">
+                <p className="mb-1 font-semibold text-[#332216]">Security Guarantee</p>
                 A matching SHA-256 hash mathematically proves that not a single bit of the file has been altered or tampered with since creation.
               </div>
             </>

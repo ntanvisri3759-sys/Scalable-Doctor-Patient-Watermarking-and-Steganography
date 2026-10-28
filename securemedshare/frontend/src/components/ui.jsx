@@ -3,15 +3,15 @@ import { X, UploadCloud, Info, Loader2, FileCheck2 } from "lucide-react";
 
 export const cx = (...a) => a.filter(Boolean).join(" ");
 export const inputCls =
-  "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/30";
+  "w-full rounded-lg border border-[#D6D4D0] bg-white/95 px-3 py-2 text-sm text-[#332216] placeholder:text-[#9E9A92] focus:border-[#6F4E37] focus:outline-none focus:ring-2 focus:ring-[#6F4E37]/25 shadow-2xs transition";
 
 export function Button({ variant = "primary", size = "md", loading = false, className = "", children, ...p }) {
   const v = {
-    primary: "bg-teal-600 text-white hover:bg-teal-700",
-    navy: "bg-navy-900 text-white hover:bg-navy-800",
-    outline: "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50",
+    primary: "bg-[#6F4E37] text-white hover:bg-[#5A3E2B] shadow-sm",
+    navy: "bg-[#332216] text-white hover:bg-[#462F20] shadow-sm",
+    outline: "border border-[#D6D4D0] bg-white text-[#462F20] hover:bg-[#E6E0F0]/50 hover:border-[#BEAFDE]",
     danger: "bg-red-600 text-white hover:bg-red-700",
-    ghost: "text-slate-600 hover:bg-slate-100",
+    ghost: "text-[#5A3E2B] hover:bg-[#E6E0F0]/50",
   }[variant];
   const s = { sm: "px-3 py-1.5 text-sm", md: "px-4 py-2 text-sm", lg: "px-6 py-3 text-base" }[size];
   return (
@@ -19,7 +19,7 @@ export function Button({ variant = "primary", size = "md", loading = false, clas
       {...p}
       disabled={loading || p.disabled}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60",
+        "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6F4E37] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60",
         v, s, className
       )}
     >
@@ -31,10 +31,10 @@ export function Button({ variant = "primary", size = "md", loading = false, clas
 
 export function Card({ title, action, children, className = "" }) {
   return (
-    <section className={cx("rounded-xl border border-slate-200 bg-white shadow-sm", className)}>
+    <section className={cx("rounded-xl border border-[#E5E4E2] bg-white/90 shadow-sm backdrop-blur-sm", className)}>
       {(title || action) && (
-        <header className="flex items-center justify-between border-b border-slate-100 px-5 py-3">
-          <h2 className="font-semibold text-navy-900">{title}</h2>
+        <header className="flex items-center justify-between border-b border-[#E5E4E2] bg-gradient-to-r from-[#FAF8FD] to-[#F5F4F3] px-5 py-3 rounded-t-xl">
+          <h2 className="font-semibold text-[#332216]">{title}</h2>
           {action}
         </header>
       )}
@@ -44,11 +44,13 @@ export function Card({ title, action, children, className = "" }) {
 }
 
 const tones = {
-  teal: "bg-teal-50 text-teal-700 ring-teal-600/20",
-  navy: "bg-navy-50 text-navy-700 ring-navy-600/20",
+  teal: "bg-[#FAF8FD] text-[#6F4E37] ring-[#6F4E37]/25",
+  navy: "bg-[#FAF8FD] text-[#332216] ring-[#6F4E37]/20",
   red: "bg-red-50 text-red-700 ring-red-600/20",
   amber: "bg-amber-50 text-amber-800 ring-amber-600/20",
-  slate: "bg-slate-100 text-slate-600 ring-slate-500/20",
+  slate: "bg-[#F3F2F0] text-[#5A3E2B] ring-[#D6D4D0]",
+  lavender: "bg-[#E6E0F0] text-[#392A5B] ring-[#BEAFDE]",
+  platinum: "bg-[#E5E4E2] text-[#332216] ring-[#BCB9B3]",
 };
 export function Badge({ tone = "slate", children }) {
   return <span className={cx("inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset", tones[tone])}>{children}</span>;
@@ -58,12 +60,12 @@ export const StatusBadge = ({ status }) => <Badge tone={statusTone[status] || "s
 
 export function StatCard({ icon: Icon, label, value, hint }) {
   return (
-    <div className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <div className="rounded-lg bg-teal-50 p-3 text-teal-700"><Icon className="h-6 w-6" /></div>
+    <div className="flex items-center gap-4 rounded-xl border border-[#E5E4E2] bg-white/90 p-5 shadow-sm backdrop-blur-xs">
+      <div className="rounded-lg bg-[#E6E0F0] p-3 text-[#6F4E37] ring-1 ring-[#D6CCEA]"><Icon className="h-6 w-6" /></div>
       <div>
-        <p className="text-2xl font-bold text-navy-900">{value}</p>
-        <p className="text-sm text-slate-500">{label}</p>
-        {hint && <p className="text-xs text-slate-400">{hint}</p>}
+        <p className="text-2xl font-bold text-[#332216]">{value}</p>
+        <p className="text-sm font-medium text-[#6F4E37]/80">{label}</p>
+        {hint && <p className="text-xs text-[#9E9A92]">{hint}</p>}
       </div>
     </div>
   );
@@ -73,8 +75,8 @@ export function PageHeader({ title, subtitle, action }) {
   return (
     <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
       <div>
-        <h1 className="text-2xl font-bold text-navy-900">{title}</h1>
-        {subtitle && <p className="mt-1 text-sm text-slate-500">{subtitle}</p>}
+        <h1 className="text-2xl font-bold text-[#332216]">{title}</h1>
+        {subtitle && <p className="mt-1 text-sm text-[#5A3E2B]/80">{subtitle}</p>}
       </div>
       {action}
     </div>
@@ -83,8 +85,8 @@ export function PageHeader({ title, subtitle, action }) {
 
 export function DemoBanner({ children }) {
   return (
-    <div className="mb-6 flex items-start gap-2 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
-      <Info className="mt-0.5 h-4 w-4 shrink-0" />
+    <div className="mb-6 flex items-start gap-2.5 rounded-lg border border-[#D6CCEA] bg-[#E6E0F0]/70 p-3 text-sm text-[#392A5B] shadow-2xs">
+      <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#6F4E37]" />
       <p>{children}</p>
     </div>
   );
@@ -110,14 +112,14 @@ export function Modal({ open, onClose, title, children, footer }) {
   }, [open, onClose]);
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-navy-900/50 p-4" onClick={onClose}>
-      <div role="dialog" aria-modal="true" className="w-full max-w-lg rounded-xl bg-white shadow-xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3">
-          <h3 className="font-semibold text-navy-900">{title}</h3>
-          <button onClick={onClose} aria-label="Close"><X className="h-5 w-5 text-slate-500" /></button>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#21150D]/60 backdrop-blur-xs p-4" onClick={onClose}>
+      <div role="dialog" aria-modal="true" className="w-full max-w-lg rounded-xl border border-[#E5E4E2] bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between border-b border-[#E5E4E2] bg-gradient-to-r from-[#FAF8FD] to-[#F5F4F3] px-5 py-3 rounded-t-xl">
+          <h3 className="font-semibold text-[#332216]">{title}</h3>
+          <button onClick={onClose} aria-label="Close"><X className="h-5 w-5 text-[#807D77] hover:text-[#332216]" /></button>
         </div>
         <div className="p-5">{children}</div>
-        {footer && <div className="flex justify-end gap-2 border-t border-slate-100 px-5 py-3">{footer}</div>}
+        {footer && <div className="flex justify-end gap-2 border-t border-[#E5E4E2] bg-[#FAF8FD] px-5 py-3 rounded-b-xl">{footer}</div>}
       </div>
     </div>
   );
@@ -178,9 +180,9 @@ export function FileDrop({ accept = [], exts = "", maxMB = 10, file, onFile, lab
         onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && ref.current?.click()}
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => { e.preventDefault(); pick(e.dataTransfer.files?.[0]); }}
-        className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 px-4 py-8 text-center hover:border-teal-500 hover:bg-teal-50/40"
+        className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed border-[#D6D4D0] bg-[#FAF8FD]/75 px-4 py-8 text-center hover:border-[#6F4E37] hover:bg-[#E6E0F0]/40 transition shadow-2xs"
       >
-        {file ? <FileCheck2 className="h-8 w-8 text-teal-600" /> : <UploadCloud className="h-8 w-8 text-slate-400" />}
+        {file ? <FileCheck2 className="h-8 w-8 text-[#6F4E37]" /> : <UploadCloud className="h-8 w-8 text-[#9E9A92]" />}
         <p className="text-sm font-medium text-slate-700">{file ? file.name : label}</p>
         <p className="text-xs text-slate-500">{file ? `${(file.size / 1024).toFixed(1)} KB` : `${exts} - up to ${maxMB} MB`}</p>
         <input ref={ref} type="file" className="hidden" accept={accept.join(",")} onChange={(e) => pick(e.target.files?.[0])} />

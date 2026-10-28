@@ -83,7 +83,8 @@ export default function Watermark() {
           <button
             key={t}
             onClick={() => setTab(t)}
-            className={cx("rounded-lg px-4 py-2 text-sm font-medium capitalize", tab === t ? "bg-navy-900 text-white" : "bg-white text-slate-600 ring-1 ring-slate-200")}
+            className={cx("rounded-lg px-4 py-2 text-sm font-medium capitalize transition",
+              tab === t ? "bg-[#6F4E37] text-white shadow-sm" : "bg-white/90 text-[#462F20] border border-[#E5E4E2] hover:bg-[#E6E0F0]/50")}
           >
             {t === "embed" ? "Embed watermark" : "Verify watermark"}
           </button>
