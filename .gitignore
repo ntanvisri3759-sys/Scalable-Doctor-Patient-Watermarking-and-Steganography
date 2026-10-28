@@ -1,0 +1,37 @@
+# Environment & Secrets (Never commit secrets or API keys)
+.env
+.env.*
+!.env.example
+*.local
+
+# Node
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+*.log
+
+# Python Virtual Environments & Cache
+venv/
+**/venv/
+.venv/
+env/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Uploaded Files
+uploads/*
+!uploads/.gitkeep
+**/uploads/*
+!**/uploads/.gitkeep
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
